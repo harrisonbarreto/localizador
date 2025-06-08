@@ -1,0 +1,15 @@
+function compartirUbicacion() {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      document.getElementById("ubicacion").innerHTML =
+        `Tu ubicación es:<br>Latitud: ${lat}<br>Longitud: ${lon}`;
+    }, function(error) {
+      document.getElementById("ubicacion").innerText = "Error al obtener ubicación.";
+    });
+  } else {
+    document.getElementById("ubicacion").innerText = "La geolocalización no está disponible.";
+  }
+}
